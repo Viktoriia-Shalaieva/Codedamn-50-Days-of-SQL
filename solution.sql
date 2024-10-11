@@ -1,4 +1,5 @@
 /*
+DAY 1
 Filtering Patients by Weight Range in SQLite
 Your challenge is to construct an SQL query to achieve the following:
 
@@ -31,6 +32,7 @@ where weight between 100 and 120
 ;
 
 /*
+DAY 2
 Finding Patients from Hamilton with Allergies Using SQL
 Write an SQL query to find a list of patients' first_name, last_name, and allergies who are from the city of Hamilton and have non-null values in the allergies column.
 
@@ -49,6 +51,7 @@ WHERE  city = 'Hamilton'
 ;
 
 /*
+DAY 3
 Filtering and Sorting Customer Data by City and Contact Name in SQLite
 In this lab, you will be working with the SQLite database northwind.sqlite. Your main task is to construct an SQL query to retrieve specific information from the customers table.
 
@@ -72,6 +75,7 @@ ORDER BY contact_name ASC
 ;
 
 /*
+DAY 4
 Finding the Tallest Patient's Name and Height
 Your goal is to retrieve specific information about patients based on certain criteria. Specifically, you are tasked with the following:
 
@@ -101,6 +105,7 @@ FROM patients
 ;
 
 /*
+DAY 5
 Filtering Patients by Specific IDs in a Hospital Database
 Easy
 128
@@ -136,6 +141,7 @@ WHERE patient_id IN (1, 45, 534, 879, 1000)
 ;
 
 /*
+DAY 6
 Counting Total Admissions for a Specific Patient in a Hospital Database
 
 Write an SQL query to show the patient id and the total number of admissions for a patient with a patient_id of 579. Your query should return the patient_id and the total count of admissions for that patient with the column name alias total_admissions
@@ -155,6 +161,7 @@ WHERE patient_id = 579
 ;
 
 /*
+DAY 7
 Customer names (chinook database)
 
 Database Details
