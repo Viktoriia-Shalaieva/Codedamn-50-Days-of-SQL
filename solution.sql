@@ -404,3 +404,43 @@ SELECT
 FROM
     products
 ;
+
+/*
+DAY 13
+Filtering Patients by Specific First Name Criteria in SQLite
+
+Your task is to write a SQL query to fetch specific patient information from the patients table.
+
+Schema
+patients table schema for reference
+
+patient_id
+first_name
+last_name
+gender
+birth_date
+city
+province_id
+allergies
+height
+weight
+Task
+Show the patient_id and first_name from the patients table where the first_name starts and ends with the letter 's' and is at least 6 characters long and ordered by patient_id in ascending order
+
+Important Concepts
+SQLite syntax: You will be writing your query in SQLite.
+Wildcards: This query will require you to use wildcards to filter data.
+*/
+
+SELECT 
+    patient_id
+    , first_name
+FROM
+    patients
+WHERE
+    LOWER(first_name) LIKE 's%s' 
+    AND
+    LENGTH(first_name) >=6
+ORDER BY 
+    patient_id
+;
