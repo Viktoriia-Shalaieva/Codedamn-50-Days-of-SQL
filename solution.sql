@@ -499,3 +499,27 @@ GROUP BY
 HAVING 
     COUNT(*) >= 2
 ;
+/*
+DAY 16
+Retrieve Most Recent Admission Details for a Specific Patient in SQLite
+
+Your task is to interact with the admissions table to retrieve specific information. Your goal is to write a SQL query to show all columns for a patient with a patient_id of 542 based on their most recent admission_date.
+
+Schema
+Table Schema for admissions table
+
+patient_id
+admission_date
+discharge_date
+diagnosis
+attending_doctor_id
+*/
+SELECT *
+FROM
+    admissions
+WHERE 
+    patient_id = 542
+ORDER BY 
+    admission_date DESC
+LIMIT 1
+;
