@@ -580,3 +580,30 @@ FROM
 WHERE 
     country NOT IN ('Germany', 'Mexico', 'Spain')
 ;
+/*
+DAY 19
+Filter and Sort Unique Cities Starting with a Vowel from Patient Data
+
+Your task is to write an SQL query to retrieve a list of unique cities where patients in the patients table reside. The catch is, you only need to list cities that start with a vowel (A, E, I, O, U), and sort them in ascending order.
+
+Concepts
+To accomplish this task, you'll likely need to be familiar with the following SQL concepts:
+
+SELECT: To specify the columns that should be returned in the result set.
+DISTINCT: To ensure that the result set contains unique records.
+WHERE: To filter the records based on specific conditions.
+LIKE: To search for a specified pattern in a column.
+ORDER BY: To sort the result set in ascending or descending order.
+*/
+SELECT DISTINCT city
+FROM 
+patients
+WHERE 
+   city LIKE 'A%' 
+   OR city LIKE 'E%' 
+   OR city LIKE 'I%' 
+   OR city LIKE 'O%' 
+   OR city LIKE 'U%'
+ORDER BY 
+   city ASC
+;
