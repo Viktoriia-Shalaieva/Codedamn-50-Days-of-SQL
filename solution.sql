@@ -607,3 +607,47 @@ WHERE
 ORDER BY 
    city ASC
 ;
+
+/*
+DAY 20
+Counting and Sorting Patients by City in SQLite
+
+Your task is to write a SQL query that returns the name of each city and the total number of patients residing in that city with the column name as num_patients. Your query should order the results first by the total number of patients (num_patients) in descending order, and then by the city name in ascending alphabetical order.
+
+Concepts Covered
+Aggregate Functions (COUNT)
+GROUP BY Clause
+Sorting (ORDER BY, ASC, DESC)
+Database Schema
+patients: This table contains information related to patients. You'll primarily be querying this table to solve the exercise.
+
+Patients Table Schema
+
+product_id
+product_name
+supplier_id
+category_id
+quantity_per_unit
+unit_price
+units_in_stock
+units_on_order
+reorder_level
+discontinued
+Requirements
+Use the SELECT statement to specify the columns you want to retrieve.
+Utilize the COUNT function to get the total number of patients for each city give the column an alias num_patients
+Apply the GROUP BY clause to group the results by the city.
+Use the ORDER BY clause to sort the results based on the conditions specified.
+*/
+
+SELECT
+    city
+    , COUNT(*) AS num_patients
+FROM 
+    patients
+GROUP BY 
+    city
+ORDER BY
+    num_patients DESC
+    , city ASC
+;
