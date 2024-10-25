@@ -651,3 +651,54 @@ ORDER BY
     num_patients DESC
     , city ASC
 ;
+
+/*
+DAY 21
+
+Customers by Country (chinook database)
+
+The dataset you're working with represents a digital media store. You'll find information about artists, albums, tracks, media types, genres, playlists, invoices, customers, and employees.
+
+Instructions
+Carefully read through the challenge requirements.
+Stick strictly to the column and table names provided in the Chinook database schema.
+After constructing your SQL query, test it to ensure it works as expected.
+Once you're confident in your solution, submit it for evaluation.
+Challenges
+Objective:
+
+Determine the number of customers from each country.
+
+Description:
+
+Write an SQL query that counts the number of customers from each country. You should group the results by Country and order them alphabetically by Country.
+
+Tables Used:
+
+Customer
+Expected Columns in Output:
+
+Country
+CustomerCount (this should represent the count of customers for each country)
+Hints/Tips:
+
+Make sure to use the COUNT function and the GROUP BY clause.
+When writing your query, make sure to name the count column as CustomerCount.
+Your result should be ordered by Country.
+Example of Expected Output:
+
+Country	CustomerCount
+Brazil	5
+Canada	8
+*/
+
+SELECT
+    Country
+    , COUNT(*) AS CustomerCount
+FROM
+    Customer
+GROUP BY 
+    Country
+ORDER BY
+    Country
+;
