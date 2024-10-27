@@ -702,3 +702,54 @@ GROUP BY
 ORDER BY
     Country
 ;
+
+/*
+DAY 22
+Invoices by Year (chinook database)
+
+Your main task in this lab is to craft SQL queries to extract specific data from the Chinook database. You should be able to understand the database schema, apply various SQL techniques, and come up with the required solution.
+
+Database Schema
+Here's a brief rundown of the tables and columns you will be working with:
+
+"Artist": Contains "ArtistId" and "Name" columns.
+"Album": Important columns include "AlbumId", "Title", and "ArtistId".
+"Track": Some key columns are "TrackId", "Name", "AlbumId", and "InvoiceDate".
+"Invoice": The main columns to note are "InvoiceId", and "InvoiceDate".
+Instructions
+Stick to the SQLite syntax as we are working with the SQLite version of the Chinook database.
+Ensure your queries are optimized for performance.
+Properly format and structure your SQL for readability.
+Always include an "ORDER BY" clause where specified to ensure consistent and correct output.
+Challenge
+Objective: Your task is to count the number of invoices generated each year from the Invoice table.
+
+Expected Output:
+
+Columns:
+Year: Extracted from the InvoiceDate column representing the year the invoices were generated. (Hint: Use string functions to extract the year part).
+InvoiceCount: Represents the total number of invoices generated in that specific year.
+Order: Ensure your results are sorted by the Year column in ascending order.
+
+SQL Components to Use:
+
+substr() function to extract the year from the InvoiceDate column.
+GROUP BY clause to group results by year.
+COUNT() function to count the invoices per year.
+ORDER BY clause to sort the results by year.
+Evaluation:
+Ensure your query returns the correct counts for each year.
+While the primary requirement is the SQLite syntax, try to keep your queries optimized.
+Your solution should be clear and easily understandable, with proper SQL formatting.
+*/
+
+SELECT
+    SUBSTR(InvoiceDate, 1, 4) AS Year
+    , COUNT(*) AS InvoiceCount
+FROM
+    Invoice
+GROUP BY
+    SUBSTR(InvoiceDate, 1, 4)
+ORDER BY
+    SUBSTR(InvoiceDate, 1, 4)
+;
