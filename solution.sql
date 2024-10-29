@@ -805,3 +805,39 @@ WHERE
     )
 ;
 
+/*
+DAY 24
+Identifying Provinces with More Male Patients than Female
+
+Your task is to write a SQL query to answer the following question. Show the provinces that have more patients identified as 'M' than 'F'. You should only display the full province_name.
+
+Database Information
+You will be working with a database. The relevant tables for this exercise are:
+
+patients
+province_names
+You are encouraged to explore the structure of these tables to understand their relationships and the data they contain.
+
+Important Concepts
+Joins: You'll need to join multiple tables to gather all the necessary data.
+Aggregate Functions: These functions allow you to perform calculations on a group of rows, potentially subdividing them based on the values of one or more columns. For this exercise, understanding how to count rows based on certain conditions will be crucial.
+Grouping: It's essential to group your results by certain columns to aggregate data correctly.
+Having Clause: Once you've grouped your results, you might want to filter them based on the aggregated data.
+Make sure the column name is province_name
+
+Remember to think critically about each step in your query, and ensure your final output matches the question's requirements. Good luck!
+*/
+SELECT
+    pr.province_name
+FROM 
+    province_names pr
+JOiN 
+    patients p
+ON pr.province_id = p.province_id
+GROUP BY 
+    p.province_id
+HAVING 
+    COUNT(CASE WHEN p.gender = 'M' THEN 1 END) > 
+    COUNT(CASE WHEN p.gender = 'F' THEN 1 END)
+;
+
