@@ -841,3 +841,36 @@ HAVING
     COUNT(CASE WHEN p.gender = 'F' THEN 1 END)
 ;
 
+/*
+DAY 25
+Combining Patient and Doctor Data Using SQL UNION
+
+The hospital.sqlite database consists of multiple tables, but for this challenge, you will primarily be focused on two tables:
+
+patients
+doctors
+Each table represents different roles within a hospital: "Patient" and "Doctor".
+
+Task Description
+Your challenge is to retrieve the first_name, last_name, and role of every person present in both the patients and doctors tables. You must ensure that the role for each person is correctly labeled as either "Patient" or "Doctor". Make sure to name this column as "role"
+
+Key Concepts
+UNION: SQL's UNION clause allows you to combine rows from two or more tables based on a related column. The primary condition is that the columns should be of the same datatype.
+ALIAS: In SQL, aliases are used to give a temporary name to a table or a column for the purpose of a specific SQL query. It can be beneficial for making column names more readable.
+Good luck with your task! Remember, practice makes perfect.
+*/
+
+SELECT 
+    first_name
+    , last_name
+    , 'Patient' AS role
+FROM 
+    patients
+UNION ALL
+SELECT 
+    first_name
+    , last_name
+    , 'Doctor' AS role
+FROM 
+    doctors
+;
