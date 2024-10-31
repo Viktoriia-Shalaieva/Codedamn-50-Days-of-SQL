@@ -874,3 +874,91 @@ SELECT
 FROM 
     doctors
 ;
+
+/*
+DAY 26
+Incomplete Albums (chinook database)
+In this lab, you will be tasked with writing SQL queries to solve specific challenges. The dataset used in this lab is based on the "Chinook" database, which simulates a digital media store, including tables for artists, albums, media tracks, invoices, and customers.
+
+Dataset Schema
+Here's a brief overview of the tables and their important columns:
+
+"Artist": Represents music artists.
+
+"ArtistId": Unique identifier for each artist.
+"Name": Name of the artist.
+"Album": Represents a collection of tracks.
+
+"AlbumId": Unique identifier for each album.
+"Title": Name of the album.
+"ArtistId": Identifier of the artist of the album.
+"Track": Represents individual media tracks.
+
+"TrackId": Unique identifier for each track.
+"Name": Name of the track.
+"AlbumId": Identifier of the album containing the track.
+Challenges
+You will be given specific challenges that test various aspects of SQL, including but not limited to joins, subqueries, and aggregation functions.
+
+Objective:
+Identify albums that have tracks missing. For the purpose of this challenge, any album that does not have an associated track in the tracks table is considered to have missing tracks.
+
+Tables Involved:
+
+albums
+tracks
+Instructions:
+
+Join the albums table with the tracks table using the appropriate keys.
+Find albums where there are no tracks associated.
+Your result should only include albums that are missing tracks.
+Expected Output Columns:
+
+albums.Title
+Ordering:
+Order your results based on albums.AlbumId.
+*/
+Incomplete Albums (chinook database)
+Medium
+34
+2
+84.6% Acceptance
+In this lab, you will be tasked with writing SQL queries to solve specific challenges. The dataset used in this lab is based on the "Chinook" database, which simulates a digital media store, including tables for artists, albums, media tracks, invoices, and customers.
+
+Dataset Schema
+Here's a brief overview of the tables and their important columns:
+
+"Artist": Represents music artists.
+
+"ArtistId": Unique identifier for each artist.
+"Name": Name of the artist.
+"Album": Represents a collection of tracks.
+
+"AlbumId": Unique identifier for each album.
+"Title": Name of the album.
+"ArtistId": Identifier of the artist of the album.
+"Track": Represents individual media tracks.
+
+"TrackId": Unique identifier for each track.
+"Name": Name of the track.
+"AlbumId": Identifier of the album containing the track.
+Challenges
+You will be given specific challenges that test various aspects of SQL, including but not limited to joins, subqueries, and aggregation functions.
+
+Objective:
+Identify albums that have tracks missing. For the purpose of this challenge, any album that does not have an associated track in the tracks table is considered to have missing tracks.
+
+Tables Involved:
+
+albums
+tracks
+Instructions:
+
+Join the albums table with the tracks table using the appropriate keys.
+Find albums where there are no tracks associated.
+Your result should only include albums that are missing tracks.
+Expected Output Columns:
+
+albums.Title
+Ordering:
+Order your results based on albums.AlbumId.
