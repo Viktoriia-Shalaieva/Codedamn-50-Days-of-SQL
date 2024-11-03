@@ -965,3 +965,79 @@ ORDER BY
     CustomerId
     , InvoiceDate
 ;   
+
+/*
+DAY 29
+Multi-table Subquery
+
+Welcome to this SQLite lab where you will be honing your SQL skills using the Chinook dataset. The Chinook dataset represents a digital media store, including tables for artists, albums, media tracks, invoices, and customers.
+
+Objective
+Your goal is to complete SQL challenges based on the data and relationships in the Chinook database.
+
+Dataset Description
+The Chinook dataset consists of the following tables:
+
+"Artist" with columns: "ArtistId" and "Name".
+"Album" with columns: "AlbumId", "Title", and "ArtistId".
+"Track" with columns: "TrackId", "Name", "AlbumId", "MediaTypeId", "GenreId", "Composer", "Milliseconds", "Bytes", and "UnitPrice".
+... [and so on for each table]
+Challenges
+Retrieve the track with the longest duration for each genre.
+
+Instructions:
+
+From the "Track" table, fetch the "GenreId" and the name of the track corresponding to the maximum duration for each genre.
+Your result should have two columns: "GenreId" and the track's name with the maximum duration, named as "MaxDurationTrackName".
+Order your results by "GenreId" in ascending order to ensure consistency in output.
+Expected Output Columns:
+
+"GenreId"
+"MaxDurationTrackName"
+To ensure success:
+
+Stick closely to the given schema, table names, and column names.
+Use double quotes around table and column names for clarity.
+Remember to order your results when necessary to match the expected output.
+*/
+-- solution 1
+WITH MaxDurationPerGenre AS (
+    SELECT 
+        "GenreId", 
+        MAX("Milliseconds") AS "MaxMilliseconds"
+    FROM 
+        "Track"
+    GROUP BY 
+        "GenreId"
+)
+
+SELECT 
+    t."GenreId",
+    t."Name" AS "MaxDurationTrackName"
+FROM 
+    "Track" t
+JOIN 
+    MaxDurationPerGenre md
+ON 
+    t."GenreId" = md."GenreId" AND t."Milliseconds" = md."MaxMilliseconds"
+ORDER BY 
+    t."GenreId" ASC;
+
+-- solution 2 
+SELECT 
+    "GenreId"
+    , "Name" AS "MaxDurationTrackName"
+FROM 
+    "Track"
+WHERE 
+    ("GenreId", "Milliseconds") IN (
+        SELECT 
+            "GenreId"
+            , MAX("Milliseconds")
+        FROM 
+            "Track"
+        GROUP BY 
+            "GenreId"
+    )
+ORDER BY 
+    "GenreId" ASC;
