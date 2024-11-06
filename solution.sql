@@ -1041,3 +1041,60 @@ WHERE
     )
 ORDER BY 
     "GenreId" ASC;
+
+/*
+DAY 32
+Invoice Line Count (chinook database)
+
+Your task is to write SQL queries to solve a series of challenges based on the chinook database. While constructing your queries, make sure to keep the following points in mind:
+
+Stick to the table and column names exactly as defined in the chinook database schema. Deviations from the original names may result in incorrect results.
+
+Use double quotes around table and column names for clarity, like "TableName".
+
+When creating your solution, ensure the ORDER BY clause is used wherever applicable to avoid potential output mismatches.
+
+Ensure your output column names match exactly with what's mentioned in the challenge description.
+
+Database Schema
+Here's a quick rundown of the chinook database schema:
+
+Tables:
+Artist: Contains columns "ArtistId" and "Name".
+Album: Contains columns "AlbumId", "Title", and "ArtistId".
+Track: Holds information related to individual tracks.
+MediaType, Genre, Playlist, PlaylistTrack, Invoice, InvoiceLine, Customer, and Employee: Various other tables with their respective columns.
+Challenges
+Objective: Your task is to determine the number of line items associated with each invoice.
+
+Description:
+In any business, an invoice can contain multiple line items detailing the products or services being charged. For this challenge, you need to find out how many line items are there in every invoice.
+
+Tables to Use:
+
+Invoice
+InvoiceLine
+Instructions:
+
+Join the Invoice and InvoiceLine tables using the appropriate key.
+Group the results by Invoice.InvoiceId.
+Count the number of line items for each invoice. The result should have a column named LineCount that represents this count.
+Display the Invoice.InvoiceId and LineCount.
+Order your results by Invoice.InvoiceId.
+Expected Output Columns:
+
+Invoice.InvoiceId
+LineCount
+*/
+
+SELECT
+    i.InvoiceId
+    , COUNT(il.InvoiceLineId) AS LineCount
+FROM
+    Invoice i
+    JOIN InvoiceLine il ON i.InvoiceId = il.InvoiceId
+GROUP BY 
+    i.InvoiceId
+ORDER BY 
+    i.InvoiceId
+;
