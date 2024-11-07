@@ -1098,3 +1098,37 @@ GROUP BY
 ORDER BY 
     i.InvoiceId
 ;
+
+/*
+DAY 33
+Category-Wise Average Product Price in Northwind
+
+Your task is to explore the database and craft an SQL query to answer the given challenge.
+
+Relevant Tables:
+
+products
+categories
+Challenge:
+Show the category name and the average product unit price for each category, rounding the result to two decimal places. The column names must be category_name, average_unit_price and ordered by average_unit_price in descending order
+
+Important Concepts:
+
+JOIN: Understand how to use the JOIN clause to combine rows from two or more tables based on a related column.
+GROUP BY: Grasp the concept of grouping rows that have the same values in specified columns into summary rows.
+Aggregate Functions: Familiarize yourself with SQL aggregate functions, like AVG, to compute a single result value from a set of input values.
+ROUND: Know how to use this function to round the numbers to the desired decimal places.
+ORDER BY: To show the desired rows in the required order based on the column name
+Best of luck! Craft your query keeping these concepts in mind.
+*/
+SELECT
+    c.category_name
+    , ROUND(AVG(p.unit_price),2) AS average_unit_price
+FROM products p
+    JOIN categories c
+    ON c.category_id = p.category_id
+GROUP BY 
+    c.category_name
+ORDER BY
+    average_unit_price DESC
+;
