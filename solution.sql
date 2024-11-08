@@ -1132,3 +1132,56 @@ GROUP BY
 ORDER BY
     average_unit_price DESC
 ;
+
+/*
+DAY 34
+Playlist Duration (chinook database)
+
+Welcome to the SQL lab based on the SQLite chinook database. In this lab, you will be working on various challenges to test your SQL skills.
+
+Instructions
+Database Connection: You do not need to establish any database connections. Everything is set up for you to start coding.
+
+Writing SQL Queries: Write your SQL queries in the provided editor. Make sure to stick to the exact table and column names as per the chinook database schema.
+
+Test Execution: Once you have written your SQL query for a challenge, run the test to see if it passes.
+
+Column Names: Be extremely cautious about the column names. They must match exactly as specified in the challenge for your test to pass.
+
+Query Formatting: For better readability and clarity, use double quotes around column and table names whenever possible.
+
+Challenges
+Objective:
+
+Calculate the total duration of each playlist in milliseconds.
+
+Tables Involved:
+
+Playlist, PlaylistTrack, Track
+
+Order By:
+
+Order your result by Playlist.PlaylistId.
+
+Final Columns in Output:
+
+Your query should return the following columns:
+
+Playlist.Name as Name,
+
+SUM of Track.Milliseconds as TotalDuration.
+*/
+SELECT 
+    p.Name AS Name
+    , SUM(t.Milliseconds) AS TotalDuration
+FROM 
+    Playlist p
+JOIN 
+    PlaylistTrack pt ON p.PlaylistId = pt.PlaylistId
+JOIN 
+    Track t ON pt.TrackId = t.TrackId
+GROUP BY 
+    p.PlaylistId
+ORDER BY 
+    p.PlaylistId
+;
