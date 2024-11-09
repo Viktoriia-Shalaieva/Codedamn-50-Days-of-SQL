@@ -1185,3 +1185,55 @@ GROUP BY
 ORDER BY 
     p.PlaylistId
 ;
+/*
+DAY 35
+Complex Filtering using Common Table Expressions (CTE)
+Hard
+
+Welcome to this SQL lab designed to test and improve your skills! We'll be using the Chinook database and the SQLite engine for this exercise.
+
+Database Schema
+The database schema used in this lab is the standard schema for the Chinook database. It consists of several tables, but for our current challenges, you'll mostly be focused on the InvoiceLine table.
+
+Challenges
+Identifying Duplicate Tracks from the Same Album in Invoices
+Table Used: "InvoiceLine"
+
+Task Description:
+Your task is to identify invoices that contain more than one track from the same album. Write a SQL query to accomplish this.
+
+Final Output Columns:
+
+"InvoiceId": The unique identifier for the invoice.
+"DuplicateAlbumCount": The count of albums that have more than one track in the invoice.
+Order By:
+Make sure to sort the final output by "InvoiceId".
+
+Important Note:
+Make sure to name all the columns exactly as specified here to match the expected output.
+*/
+WITH AlbumTrackCount AS (
+    SELECT 
+        il.InvoiceId
+        , t.AlbumId
+        , COUNT(t.TrackId) AS TrackCount
+    FROM 
+        InvoiceLine il
+    JOIN 
+        Track t ON il.TrackId = t.TrackId
+    GROUP BY 
+        il.InvoiceId
+        , t.AlbumId
+    HAVING 
+        COUNT(t.TrackId) > 1
+)
+SELECT 
+    InvoiceId
+    , COUNT(AlbumId) AS DuplicateAlbumCount
+FROM 
+    AlbumTrackCount
+GROUP BY 
+    InvoiceId
+ORDER BY 
+    InvoiceId
+;
