@@ -1276,3 +1276,39 @@ FROM
 GROUP BY 
     has_insurance
 ;
+
+/*
+DAY 37
+Aggregating Admissions Attended by Each Doctor
+You are provided with a database that contains multiple tables. Your task is to write a SQL query to fetch specific information from two tables: admissions and doctors.
+
+Question:
+Show first_name, last_name, and the total number of admissions attended for each doctor. Note that every admission in our database has been attended by a doctor.
+
+Important Concepts:
+JOIN: This SQL command can be used to combine rows from two or more tables based on a related column between them. For this lab, you will need to understand how to use JOIN to fetch data from both admissions and doctors tables.
+
+GROUP BY: This clause groups rows that have the same values in specified columns into summary rows, like "find the number of admissions for each doctor". It's often used with aggregate functions like COUNT(), MAX(), etc.
+
+COUNT(): An aggregate function that returns the number of items in a group.
+
+Requirements:
+Ensure you select the correct columns in the order specified in the question.
+You'll need to use the JOIN operation to combine information from both tables.
+Make sure to aggregate your results properly to display the total number of admissions for each doctor.
+Make sure the name of the columns in output are: first_name, last_name, admissions_total
+*/
+
+SELECT 
+    d.first_name
+    , d.last_name
+    , COUNT(a.patient_id) AS admissions_total
+FROM 
+    doctors d
+JOIN 
+    admissions a ON d.doctor_id = a.attending_doctor_id
+GROUP BY 
+    d.doctor_id
+    , d.first_name
+    , d.last_name
+;
