@@ -1312,3 +1312,33 @@ GROUP BY
     , d.first_name
     , d.last_name
 ;
+/*
+DAY 40
+Merging Customer and Supplier Data with Table Origin Column
+
+You have access to two tables: customers and suppliers. Your objective is to:
+
+Select the columns city, company_name, and contact_name from both tables.
+Merge the results together.
+Add an additional column in the result set to specify the origin of each record. This column should contain either 'customers' or 'suppliers' to indicate from which table the record came. Make sure name of this column is relationship
+Concepts to Consider
+Think about how you can merge results from two separate queries.
+Consider how to add static values to a result set for classification purposes.
+Ensure your final query is structured and formatted correctly. Once you believe you have the correct solution, submit your query for validation. Best of luck!
+*/
+SELECT 
+    city
+    , company_name
+    , contact_name
+    , 'customers' AS relationship
+FROM 
+    customers
+UNION
+SELECT 
+    city
+    , company_name
+    , contact_name
+    , 'suppliers' AS relationship
+FROM 
+    suppliers
+;
