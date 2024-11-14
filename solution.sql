@@ -1312,6 +1312,31 @@ GROUP BY
     , d.first_name
     , d.last_name
 ;
+
+/* 
+DAY 39 
+Analyzing Daily Hospital Admissions and Their Variations
+
+For each day, compute the total number of admissions. Additionally, calculate the difference in the number of admissions from the previous day.
+
+Concepts to understand:
+Aggregate Functions: These are SQL functions that perform a calculation on a set of values and return a single value. Examples include SUM(), COUNT(), AVG(), etc.
+
+Window Functions: These are special SQL functions that perform calculations across a set of rows related to the current row. An example in this exercise would be LAG(), which can fetch data from a previous row.
+
+Your goal is to write an SQL query that accomplishes the given task. Remember, focus on the structure of your query, the use of aggregate functions, and the application of window functions where necessary. Good luck!
+
+SELECT
+    admission_date
+    , COUNT(patient_id) AS admission_day
+    , COUNT(patient_id) - LAG(COUNT(patient_id)) 
+        OVER (ORDER BY admission_date) AS admission_count_change
+FROM
+    admissions
+GROUP BY
+    admission_date
+;
+
 /*
 DAY 40
 Merging Customer and Supplier Data with Table Origin Column
