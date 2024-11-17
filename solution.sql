@@ -1396,3 +1396,54 @@ ORDER BY
     ELSE 1
   END,
 province_name ASC;
+
+/*
+DAY 42
+Tracks with Multiple Genres (chinook database)
+
+Welcome to this SQL lab where you'll be working with the Chinook database to solve various challenges. This lab is designed to test your SQL skills, particularly in SQLite.
+
+Database Schema
+Here's a reminder of some of the tables you'll be working with:
+
+Artist: Contains ArtistId and Name.
+Album: Contains AlbumId, Title, and ArtistId.
+Track: Contains TrackId, Name, AlbumId, and other attributes.
+Genre: Contains GenreId and Name.
+For the full schema, please refer to the document provided.
+
+Challenges
+Objective: Your task is to write a SQL query to identify tracks that appear under more than one genre.
+
+Important: Your output will be compared with the expected output; therefore, please ensure to include all the specified columns, tables and ordering criteria.
+
+Tables Involved: Utilize the Track and Genre tables.
+
+Final Columns: The output should consist of two columns:
+
+Name from the Track table
+GenreCount, which is a count of how many genres are associated with each track.
+Ordering: The output should be ordered by TrackId.
+
+Hints:
+
+You may need to use JOIN operations between the Track and Genre tables.
+Aggregate functions can help in counting the number of genres for each track.
+Consider using a GROUP BY clause to aggregate data based on TrackId.
+A HAVING clause might be useful to filter tracks appearing in more than one genre.
+*/
+SELECT t.Name
+    , COUNT(*) AS GenreCount
+FROM 
+    Track t
+        JOIN Genre g
+            ON t.GenreId = g.GenreId
+GROUP BY 
+    t.Name
+    , t.TrackId
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    t.TrackId
+;
+
