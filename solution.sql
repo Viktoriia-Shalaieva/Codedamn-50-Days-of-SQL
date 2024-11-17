@@ -1367,3 +1367,32 @@ SELECT
 FROM 
     suppliers
 ;
+
+/*
+DAY 41
+Prioritizing 'Ontario' in Ascending Province Sort
+
+In this challenge, you'll be presented with data about various provinces. Your mission, if you choose to accept it, is to dive deep into the province_names table and retrieve specific information based on the requirements.
+
+Objective:
+Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+
+Database Details:
+
+Database Name: hospital.sqlite
+Table: province_names
+Concepts Covered
+To successfully retrieve the desired data, you should be familiar with the following SQL concepts:
+
+ORDER BY: This clause is used to sort the result-set in ascending or descending order based on one or more columns.
+CASE: The SQL CASE statement goes through conditions and returns a value when the first condition is met.
+Good luck, and happy querying!
+*/
+SELECT province_name
+FROM province_names
+ORDER BY 
+  CASE 
+    WHEN province_name = 'Ontario' THEN 0
+    ELSE 1
+  END,
+province_name ASC;
