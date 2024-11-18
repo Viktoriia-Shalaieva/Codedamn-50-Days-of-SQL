@@ -1447,3 +1447,61 @@ ORDER BY
     t.TrackId
 ;
 
+/*
+DAY 44
+Working with Subqueries
+
+Welcome to this SQL coding lab! The objective is to deepen your understanding of subqueries in SQL using the Chinook dataset. We will focus on incorporating subqueries in the SELECT and WHERE clauses to perform more advanced queries.
+
+Lab Environment
+Database: SQLite
+Dataset: Chinook
+Tables You'll Use
+"Album"
+"Track"
+Challenge Overview
+You will be tasked with listing the names of albums from the "Album" table that contain tracks in the "Track" table with "UnitPrice" higher than the average unit price across all available tracks.
+
+Key SQL Concepts
+SELECT
+WHERE
+Subquery
+AVG()
+Instructions
+Explore the Chinook Database: You don't need to download anything. The Chinook database is already set up in your environment. Feel free to explore the "Album" and "Track" tables to familiarize yourself with the data.
+
+Write Your SQL Code: Start writing your query. Make sure to stick to the SQLite syntax, as this lab environment uses SQLite.
+
+Run the Query: Once you're satisfied with your SQL query, go ahead and run it. Make sure it executes without errors and review the output to ensure it meets the challenge criteria.
+
+Submission: Save your final SQL query. Your submission will be automatically evaluated against the correct answer to determine your score.
+
+Challenge
+Objective:
+Your task is to list the distinct names of albums from the Album table that contain tracks in the Track table with UnitPrice higher than the average unit price across all available tracks. The result should be sorted by AlbumId in ascending order.
+
+Concepts to Master:
+
+SELECT to choose the specific columns: Album.Title.
+WHERE to filter records based on conditions.
+Subquery to perform a secondary query within the main query for average UnitPrice.
+AVG() to calculate the average unit price of all tracks.
+Requirements:
+
+Use only the Album and Track tables from the Chinook dataset.
+Your query should only display the distinct names of qualifying albums, meaning each album name should appear only once in your result.
+The result should be sorted by AlbumId in ascending order.
+Utilize a subquery in the WHERE clause to find the average unit price across all tracks. Compare each track's unit price against this average to determine if it exceeds the average.
+The output column should be named Title.
+*/
+SELECT DISTINCT 
+    a.Title AS Title
+FROM 
+    Album a
+JOIN 
+    Track t ON a.AlbumId = t.AlbumId
+WHERE 
+    t.UnitPrice > (SELECT AVG(UnitPrice) FROM Track)
+ORDER BY 
+    a.AlbumId;
+
