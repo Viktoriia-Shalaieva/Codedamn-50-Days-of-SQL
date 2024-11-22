@@ -1505,3 +1505,37 @@ WHERE
 ORDER BY 
     a.AlbumId;
 
+
+/*
+DAY 46
+Pivoting Rows to Columns with CASE
+Hard
+
+Welcome to the SQL practice lab, where you will hone your SQL skills using SQLite and the Chinook dataset. Follow the challenge instructions carefully to complete the lab successfully.
+
+Setup
+You don't need to worry about setting up your environment; everything has been pre-configured for you. Your task is to read the challenges and write SQL queries that solve them. Place your queries in the /home/damner/code/query.sql file.
+
+Challenges
+Your task is to pivot the "Title" column from the Employee table and count the number of occurrences of each unique title.
+
+Table Used: Employee
+Task Description: Pivot the Title column from the Employee table into separate columns for each unique title. Count the number of occurrences for each title and display them in separate columns in your output.
+Final Columns: Your output should contain the following columns:
+SalesAgentCount: Count of employees with the title 'Sales Support Agent'
+SupportAgentCount: Count of employees with the title 'Support Representative'
+OtherTitleCount: Count of employees with titles not in ('Sales Support Agent', 'Support Representative')
+Order By: Your output should be sorted by SalesAgentCount.
+*/
+SELECT 
+    SUM(CASE WHEN Title = 'Sales Support Agent' 
+        THEN 1 ELSE 0 END) AS SalesAgentCount
+    , SUM(CASE WHEN Title = 'Support Representative' 
+        THEN 1 ELSE 0 END) AS SupportAgentCount
+    , SUM(CASE WHEN Title NOT IN ('Sales Support Agent', 'Support Representative') 
+        THEN 1 ELSE 0 END) AS OtherTitleCount
+FROM 
+    Employee
+ORDER BY 
+    SalesAgentCount
+;
