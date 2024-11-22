@@ -1589,3 +1589,52 @@ WHERE
 ORDER BY 
     "Track"."TrackId"
 ;
+
+/*
+DAY 48
+Most Active Customers (chinook database)
+This lab consists of challenges, each designed to test your SQL knowledge on different concepts such as sorting, aggregation, joins, and subqueries.
+
+Rules
+Make sure to use only SQLite-compatible syntax.
+Always use double quotes around table and column names for clarity.
+Your query output should exactly match the column names and sorting criteria mentioned in the challenge description.
+Challenges
+Objective: Write an SQL query to list the top 5 customers who have the highest number of invoices. Your output should show the first names of these customers alongside the count of their invoices.
+
+Tables Involved:
+
+Customer
+Invoice
+Columns to Display in the Final Output:
+
+Customer.FirstName
+InvoiceCount (This is an alias for the invoice count column)
+Sorting Criteria:
+
+The results should be sorted by InvoiceCount in descending order.
+Constraints:
+
+Use only SQLite supported syntax.
+Your query should return exactly 5 rows.
+Note: You must use double quotes for table and column names.
+
+Submission
+Once you've written your SQL queries, make sure to submit them for evaluation. Ensure your solutions adhere to the challenge rules and guidelines to maximize your chances of passing the lab.
+*/
+
+SELECT 
+    "Customer"."FirstName"
+    , COUNT("Invoice"."InvoiceId") AS "InvoiceCount"
+FROM 
+    "Customer"
+JOIN 
+    "Invoice"
+ON 
+    "Customer"."CustomerId" = "Invoice"."CustomerId"
+GROUP BY 
+    "Customer"."CustomerId"
+ORDER BY 
+    "InvoiceCount" DESC
+LIMIT 5
+;
